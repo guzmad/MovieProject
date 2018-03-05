@@ -78,9 +78,8 @@ int main()
 	nathan.checkOut(test7);
 	q.printByGenre('F');
 	cout << endl;
-
-
-//	nathan.printHistory();
+	
+	// Testing the connection from this project to github
 
 	system("pause");
     return 0;
