@@ -76,10 +76,7 @@ int main()
 
 	Customer nathan(123, "Nathan", "Fixx");
 	nathan.checkOut(test7);
-//	q.printByGenre('F');
 	cout << endl;
-	
-	// Testing the connection from this project to github
 
 	system("pause");
     return 0;

@@ -125,8 +125,27 @@ void MovieList::quickSort(vector<vector<MovieInventory>>& movieList, int left, i
 
 }
 
-bool MovieList::checkOut(MovieInventory & MovieInventory)
+bool MovieList::checkOut(MovieInventory &MovieInventory)
 {
-	MovieInventory.decrementQuantity();
+	char genre = MovieInventory.getMovie()->getGenre();
+	int element;
+
+	if (genre == 'F')
+		element = 0;
+	else if (genre == 'D')
+		element = 1;
+	else if (genre == 'C')
+		element = 2;
+	else {
+		cout << "INVALID GENRE" << endl;
+		return false;
+	}
+
+	for (int i = 0; i < movieList[element].size(); i++) {
+		if (movieList[element][i].getMovie()->operator==(MovieInventory.getMovie())) {
+			decrementMovie(movieList[element][i]);
+			return false;
+		}
+	}
 	return false;
 }
