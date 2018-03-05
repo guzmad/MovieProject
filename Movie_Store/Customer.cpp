@@ -49,7 +49,7 @@ void Customer::printHistory()
 	customerHistory.print();
 }
 
-void Customer::checkOut(MovieInventory &MovieInventory)
+void Customer::checkOut(MovieInventory &MovieInventory) // delete method 
 {
 	MovieInventory.decrementQuantity();
 }

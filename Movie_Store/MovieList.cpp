@@ -124,3 +124,9 @@ void MovieList::quickSort(vector<vector<MovieInventory>>& movieList, int left, i
 	}
 
 }
+
+bool MovieList::checkOut(MovieInventory & MovieInventory)
+{
+	MovieInventory.decrementQuantity();
+	return false;
+}
