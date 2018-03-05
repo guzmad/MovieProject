@@ -56,7 +56,7 @@ int main()
 
 
 	MovieList q;
-	/*q.addMovie(test5);
+	q.addMovie(test5);
 	q.addMovie(test6);
 	q.addMovie(test7);
 	q.addMovie(test8);
@@ -65,18 +65,18 @@ int main()
 	q.addMovie(test10);
 	q.addMovie(test11);
 	q.addMovie(newtest);
-*/
+
 	q.printByGenre('F');
 	cout << endl;
-	/*q.printByGenre('D');
+	q.printByGenre('D');
 	cout << endl;
 	q.printByGenre('C');
-	cout << endl;*/
+	cout << endl;
 
 
 	Customer nathan(123, "Nathan", "Fixx");
 	nathan.checkOut(test7);
-	q.printByGenre('F');
+//	q.printByGenre('F');
 	cout << endl;
 	
 	// Testing the connection from this project to github

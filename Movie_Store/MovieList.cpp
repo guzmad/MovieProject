@@ -6,21 +6,21 @@ using namespace std;
 
 MovieList::MovieList()
 {
-	movieList.assign(3, vector<MovieInventory *>(0));
+	movieList.assign(3, vector<MovieInventory>(0));
 }
 
 MovieList::~MovieList()
 {
 }
 
-bool MovieList::addMovie(MovieInventory * movieInventory) 
+bool MovieList::addMovie(MovieInventory movieInventory) 
 {
 	char genre;
 	int element;
 	int left;
 	int right;
 
-	genre = movieInventory->getMovie()->getGenre();
+	genre = movieInventory.getMovie()->getGenre();
 
 	if (genre == 'F')
 		element = 0;
@@ -39,9 +39,8 @@ bool MovieList::addMovie(MovieInventory * movieInventory)
 	}
 
 	for (int i = 0; i < movieList[element].size(); i++) {
-		if (movieList[element][i]->getMovie()->operator==(movieInventory->getMovie())) {
+		if (movieList[element][i].getMovie()->operator==(movieInventory.getMovie())) {
 			incrementMovie(movieList[element][i]);
-			incrementMovie(movieInventory);
 			return false;
 		}
 	}
@@ -56,15 +55,15 @@ bool MovieList::addMovie(MovieInventory * movieInventory)
 	return true;
 }
 
-bool MovieList::incrementMovie(MovieInventory * movieInventory)
+bool MovieList::incrementMovie(MovieInventory &movieInventory)
 {
-	movieInventory->incrementQuantity();
+	movieInventory.incrementQuantity();
 	return true;
 }
 
-bool MovieList::decrementMovie(MovieInventory * movieInventory)
+bool MovieList::decrementMovie(MovieInventory &movieInventory)
 {
-	movieInventory->decrementQuantity();
+	movieInventory.decrementQuantity();
 	return true;
 }
 
@@ -86,21 +85,21 @@ void MovieList::printByGenre(const char x)
 
 	for (int i = 0; i < movieList[element].size(); i++) {
 		
-		movieList[element][i]->getMovie()->print();
-		cout << "  " << movieList[element][i]->getMediaType() << "  " << movieList[element][i]->getQuantity() << endl;
+		movieList[element][i].getMovie()->print();
+		cout << "  " << movieList[element][i].getMediaType() << "  " << movieList[element][i].getQuantity() << endl;
 	}
 
 
 }
 
-int MovieList::getWall(vector<vector<MovieInventory *>>& movieList, int left, int right, int element)
+int MovieList::getWall(vector<vector<MovieInventory>>& movieList, int left, int right, int element)
 {
-	MovieInventory * temp;
-	MovieInventory * pivot = movieList[element][right];
+	MovieInventory temp;
+	MovieInventory pivot = movieList[element][right];
 	int i = (left - 1);
 
 	for (int j = left; j <= right - 1; j++) {
-		if (movieList[element][j]->getMovie()->operator<(pivot->getMovie())) {
+		if (movieList[element][j].getMovie()->operator<(pivot.getMovie())) {
 			i++;
 			temp = movieList[element][j];
 			movieList[element][j] = movieList[element][i];
@@ -115,7 +114,7 @@ int MovieList::getWall(vector<vector<MovieInventory *>>& movieList, int left, in
 	return (i + 1);
 }
 
-void MovieList::quickSort(vector<vector<MovieInventory *>>& movieList, int left, int right, int element)
+void MovieList::quickSort(vector<vector<MovieInventory>>& movieList, int left, int right, int element)
 {
 	if (left < right) {
 		int wall = getWall(movieList, left, right, element);
