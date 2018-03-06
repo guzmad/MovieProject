@@ -75,8 +75,24 @@ int main()
 
 
 	Customer nathan(123, "Nathan", "Fixx");
-	nathan.checkOut(test7);
+	q.checkOut(test7);
+	q.checkOut(test5);
+
+	q.checkIn(test9);
+	q.checkIn(test9);
+	q.checkIn(test9);
+	q.checkIn(test9);
+	q.checkIn(test9);
+	q.checkIn(test9);
+	q.checkIn(test9);
+	q.checkIn(test9);
+
+	
+	q.printByGenre('F');
+
 	cout << endl;
+
+	q.printByGenre('C');
 
 	system("pause");
     return 0;

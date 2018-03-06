@@ -48,13 +48,3 @@ void Customer::printHistory()
 {
 	customerHistory.print();
 }
-
-void Customer::checkOut(MovieInventory &MovieInventory) // delete method 
-{
-	MovieInventory.decrementQuantity();
-}
-
-void Customer::checkIn(MovieInventory * MovieInventory)
-{
-	MovieInventory->incrementQuantity();
-}

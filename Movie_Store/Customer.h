@@ -24,8 +24,6 @@ public:
 	void setLastName(string lastName);
 	void setFirstName(string firstName);
 	void printHistory();
-	void checkOut(MovieInventory& MovieInventory);
-	void checkIn( MovieInventory * MovieInventory);
 
 private:
 
