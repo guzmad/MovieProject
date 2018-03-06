@@ -1,13 +1,10 @@
 #include "stdafx.h"
 #include "CustomerList.h"
-#include <algorithm>
 
 
 CustomerList::CustomerList()
 {
-	for (int i = 0; i < 30; i++) {
-		customerList[i].push_back(nullptr);
-	}
+
 }
 
 void CustomerList::addCustomer(Customer * customer)
@@ -17,7 +14,15 @@ void CustomerList::addCustomer(Customer * customer)
 
 Customer * CustomerList::getCustomer(int id)
 {
-	
+	for (int i = 0; i < 30; i++) {
+		for (int j = 0; j < customerList[i].size(); i++) {
+			if (customerList[i][j]->getId() == id)
+				return customerList[i][j];
+		}
+	}
+
+	cout << "Customer not found! " << endl;
+	return nullptr;
 }
 
 int CustomerList::hashFunction(int id)

@@ -13,6 +13,7 @@ public:
 	~CustomerList();
 
 private:
+	int hashNum;
 	vector<Customer *> customerList[30];
 };
 
