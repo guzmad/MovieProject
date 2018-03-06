@@ -27,7 +27,6 @@ void Store::populateCustomer(string customerInfo)
 
 	fstream infile(customerInfo);
 
-
 	if (infile.fail())
 	{
 		cout << "No file found" << endl;

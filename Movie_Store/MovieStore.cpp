@@ -84,7 +84,7 @@ int main()
 
 	Store diegoStore;
 
-	diegoStore.populateCustomer("data4customers.txt");
+	diegoStore.populateCustomer("data4customers");
 
 	/*q.checkOut(test7);
 	q.checkOut(test5);
