@@ -13,7 +13,6 @@ public:
 	Store();
 	~Store();
 
-	void readFile(string fileName);
 	void populateMovie(string fileName);
 	void populateCustomer(string customerInfo);
 	void commandHandler(char command);
