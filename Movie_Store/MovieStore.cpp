@@ -11,6 +11,7 @@
 #include "MovieList.h"
 #include "customer.h"
 #include "CustomerList.h"
+#include "Store.h"
 #include <iostream>
 #include <vector>
 
@@ -81,7 +82,11 @@ int main()
 	Customer * tran = new Customer(9272, "Tran", "Le");
 	Customer * audrey = new Customer(2084, "Audery", "Chae");
 
-	q.checkOut(test7);
+	Store diegoStore;
+
+	diegoStore.populateCustomer("data4customers.txt");
+
+	/*q.checkOut(test7);
 	q.checkOut(test5);
 
 	q.checkIn(test9);
@@ -107,7 +112,7 @@ int main()
 	c.addCustomer(nick);
 	c.addCustomer(audrey);
 
-	Customer * tmp = c.getCustomer(1111);
+	Customer * tmp = c.getCustomer(1111);*/
 
 	system("pause");
     return 0;
