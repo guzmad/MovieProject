@@ -44,6 +44,11 @@ void Customer::setFirstName(string firstName)
 	this->firstName = firstName;
 }
 
+void Customer::addHistory(string movieTitle)
+{
+	customerHistory.add(movieTitle);
+}
+
 void Customer::printHistory()
 {
 	customerHistory.print();

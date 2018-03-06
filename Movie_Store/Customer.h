@@ -23,6 +23,7 @@ public:
 	void setId(int id);
 	void setLastName(string lastName);
 	void setFirstName(string firstName);
+	void addHistory(string movieTitle);
 	void printHistory();
 
 private:
