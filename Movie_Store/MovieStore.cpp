@@ -10,6 +10,7 @@
 #include "MovieInventory.h"
 #include "MovieList.h"
 #include "customer.h"
+#include "CustomerList.h"
 #include <iostream>
 #include <vector>
 
@@ -74,7 +75,7 @@ int main()
 	cout << endl;
 
 
-	Customer nathan(123, "Nathan", "Fixx");
+	Customer nathan(1111, "Nathan", "Fixx");
 	q.checkOut(test7);
 	q.checkOut(test5);
 
@@ -93,6 +94,8 @@ int main()
 	cout << endl;
 
 	q.printByGenre('C');
+
+	CustomerList c;
 
 	system("pause");
     return 0;

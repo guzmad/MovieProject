@@ -7,7 +7,7 @@ Customer::Customer(int id, string firstName, string LastName)
 {
 	this->id = id;
 	this->firstName = firstName;
-	this->lastName = lastName;
+	this->lastName = LastName;
 }
 
 Customer::~Customer()
