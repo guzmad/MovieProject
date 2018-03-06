@@ -75,7 +75,12 @@ int main()
 	cout << endl;
 
 
-	Customer nathan(1111, "Nathan", "Fixx");
+	Customer * nathan = new Customer(1111, "Nathan", "Fixx");
+	Customer * nick = new Customer(7593, "Nicholas", "Gorsline");
+	Customer * diego = new Customer(2482, "Diego", "Guzman");
+	Customer * tran = new Customer(9272, "Tran", "Le");
+	Customer * audrey = new Customer(2084, "Audery", "Chae");
+
 	q.checkOut(test7);
 	q.checkOut(test5);
 
@@ -96,6 +101,13 @@ int main()
 	q.printByGenre('C');
 
 	CustomerList c;
+	c.addCustomer(nathan);
+	c.addCustomer(diego);
+	c.addCustomer(tran);
+	c.addCustomer(nick);
+	c.addCustomer(audrey);
+
+	Customer * tmp = c.getCustomer(1111);
 
 	system("pause");
     return 0;
