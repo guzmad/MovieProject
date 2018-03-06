@@ -15,13 +15,98 @@ Store::~Store()
 
 void Store::populateMovie(string fileName)
 {
+	char check = ' ';
+	string tempStr;
+	string line;
+	char genre;
+	int quantity;
+	string director = "";
+	string title;
+	string majorActor;
+	int month;
+	int year;
+	MovieFactory factory;
+	Movie * tempMoviePtr;
 	ifstream fin;
 	fin.open("data4movies.txt");
 
-	MovieFactory factory;
-	Movie * temp = factory.createMovie('F', "Nora Ephron", "Zou've Got Mail", 1998);
-	MovieInventory test5(temp);
+	while (!fin.eof()) {
+		fin >> genre;
+		fin >> check;
+		
+		if (genre == 'C') {
+			fin >> quantity;
+			fin >> check;
 
+			fin >> director;
+			while (director[director.length() - 1] != ',') {
+				fin >> tempStr;
+				director += (" " + tempStr);
+			}
+			director.pop_back();
+
+			fin >> title;
+			while (title[title.length() - 1] != ',') {
+				fin >> tempStr;
+				title += (" " + tempStr);
+			}
+			title.pop_back();
+
+			fin >> majorActor;
+			while (isalpha(majorActor[majorActor.length() - 1])) {
+				fin >> tempStr;
+				majorActor += (" " + tempStr);
+			}
+
+			char putBack = majorActor[majorActor.length() - 1];
+			fin.putback(putBack);
+
+			majorActor.pop_back();
+			majorActor.pop_back(); //gets rid of white space
+
+			fin >> month;
+			fin >> year;
+
+			tempMoviePtr = factory.createMovie(genre, director, title, majorActor, month, year);
+			MovieInventory tempMovieInventory(tempMoviePtr);
+			tempMovieInventory.setQuantity(quantity - 1);
+			movieList.addMovie(tempMovieInventory);
+		}
+
+		else if (genre == 'F' || genre == 'D') {
+			fin >> quantity;
+			fin >> check;
+
+			fin >> director;
+			while (director[director.length() - 1] != ',') {
+				fin >> tempStr;
+				director += (" " + tempStr);
+			}
+			director.pop_back();
+
+			fin >> title;
+			while (title[title.length() - 1] != ',') {
+				fin >> tempStr;
+				title += (" " + tempStr);
+			}
+			title.pop_back();
+			fin >> year;
+
+			tempMoviePtr = factory.createMovie(genre, director, title, year);
+			MovieInventory tempMovieInventory(tempMoviePtr);
+			tempMovieInventory.setQuantity(quantity - 1);
+			movieList.addMovie(tempMovieInventory);
+		}
+
+		else {
+			string line;
+			cout << "Non-valid Command!" << endl;
+			getline(fin, line);
+		}
+	}
+	
+	cout << endl << endl << endl;
+	printInventory(movieList);
 }
 
 void Store::populateCustomer(string customerInfo)
@@ -79,7 +164,6 @@ void Store::populateCustomer(string customerInfo)
 
 	}
 
-
 }
 
 void Store::commandHandler(char command)
@@ -91,11 +175,14 @@ void Store::printCustomerHistory(Customer * customer)
 	customer->printHistory();
 }
 
-void Store::printInventory(MovieList * movieList)
+void Store::printInventory(MovieList &movieList)
 {
-	movieList->printByGenre('F');
-	movieList->printByGenre('D');
-	movieList->printByGenre('C');
+	movieList.printByGenre('F');
+	cout << endl;
+	movieList.printByGenre('D');
+	cout << endl;
+	movieList.printByGenre('C');
+	cout << endl;
 }
 
 void Store::borrowMovie(Customer * customer, MovieList * movieList, MovieInventory movieInventory)
@@ -109,3 +196,4 @@ void Store::returnMovie(Customer * customer, MovieList * movieList, MovieInvento
 	movieList->checkIn(movieInventory);
 	customer->addHistory("R " + movieInventory.getMovie()->getMovieTitle());
 }
+

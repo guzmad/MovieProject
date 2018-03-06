@@ -16,6 +16,7 @@ public:
 	bool addMovie(MovieInventory movieInventory);
 	bool incrementMovie(MovieInventory &movieInventory); 
 	bool decrementMovie(MovieInventory &movie);
+	bool changeQuantity(MovieInventory &movieInventory, int val);
 	void printByGenre(const char x);
 	int getWall(vector<vector<MovieInventory>> &movieList, int left, int right, int element);
 	void quickSort(vector<vector<MovieInventory>> &movieList, int left, int right, int element);

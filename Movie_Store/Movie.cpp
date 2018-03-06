@@ -55,7 +55,7 @@ bool Movie::operator==(Movie * rhs)
 
 bool Movie::operator<(Movie * rhs) 
 {
-	return this->releaseYear < rhs->releaseYear;
+	/*return this->releaseYear < rhs->releaseYear;*/
 }
 
 bool Movie::operator>(Movie * rhs)
