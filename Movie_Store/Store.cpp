@@ -13,6 +13,24 @@ Store::~Store()
 
 void Store::readFile(string fileName)
 {
+	ifstream fin;
+	int count = 0;
+	fin.open(filename);
+	int numEdges;
+	string start;
+	string end;
+	int weight;
+
+	fin >> numEdges;
+
+	while (count < numEdges) {
+		fin >> start;
+		fin >> end;
+		fin >> weight;
+
+		add(start, end, weight);
+		count++;
+	}
 
 
 }
