@@ -5,6 +5,7 @@
 
 #include "CustomerList.h"
 #include "MovieList.h"
+#include "MovieFactory.h"
 
 class Store
 {

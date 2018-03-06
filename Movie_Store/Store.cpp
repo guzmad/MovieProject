@@ -15,10 +15,12 @@ Store::~Store()
 
 void Store::populateMovie(string fileName)
 {
+	ifstream fin;
+	fin.open("data4movies.txt");
 
-
-
-
+	MovieFactory factory;
+	Movie * temp = factory.createMovie('F', "Nora Ephron", "Zou've Got Mail", 1998);
+	MovieInventory test5(temp);
 
 }
 
