@@ -21,7 +21,7 @@ public:
 	void quickSort(vector<vector<MovieInventory>> &movieList, int left, int right, int element);
 	bool checkOut(MovieInventory &MovieInventory);
 	bool checkIn(MovieInventory &MovieInventory);
-
+	bool changeQuantity(MovieInventory & movieInventory, int val);
 
 private:
 	

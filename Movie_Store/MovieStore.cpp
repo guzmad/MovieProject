@@ -114,6 +114,8 @@ int main()
 
 	Customer * tmp = c.getCustomer(1111);*/
 
+	diegoStore.populateMovie("data4movies.txt");
+
 	system("pause");
     return 0;
 }

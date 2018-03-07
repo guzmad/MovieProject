@@ -19,7 +19,7 @@ public:
 	void populateCommandsFile(string fileName);
 	void commandHandler(char command);
 	void printCustomerHistory(Customer * customer);
-	void printInventory(MovieList * movieList);
+	void printInventory(MovieList &movieList);
 	void borrowMovie(Customer * customer, MovieList * movieList, MovieInventory movieInventory);
 	void returnMovie(Customer * customer, MovieList * movieList, MovieInventory movieInventory);
 

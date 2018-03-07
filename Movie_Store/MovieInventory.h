@@ -15,6 +15,7 @@ public:
 	int getQuantity();
 	void incrementQuantity();
 	void decrementQuantity();
+	void setQuantity(int val);
 	Movie * getMovie();
 	string getMediaType();
 
