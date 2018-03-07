@@ -10,11 +10,11 @@ public:
 	ComedyMovie(char genre, string directorName, string movieTitle, int releaseYear);
 	~ComedyMovie();
 
-	virtual bool operator==(const Movie& rhs);
-	virtual bool operator<(const Movie& rhs);
-	virtual bool operator>(const Movie& rhs);
+	virtual bool operator==(const Movie &rhs);
+	virtual bool operator<(const Movie  &rhs);
+	virtual bool operator>(const Movie  &rhs);
 
-	virtual void ComedyMovie::print() = 0;
+	virtual void ComedyMovie::print();
 };
 
 #endif // !COMEDY_MOVIE_H
