@@ -20,7 +20,6 @@ Customer * CustomerList::getCustomer(int id)
 				return customerList[i][j];
 		}
 	}
-
 	cout << "Customer not found! " << endl;
 	return nullptr;
 }

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Store.h"
+#include "Customer.h"
 #include <fstream>
 #include <sstream>
 
@@ -24,7 +25,6 @@ void Store::populateMovie(string fileName)
 
 void Store::populateCustomer(string customerInfo)
 {
-
 	fstream infile(customerInfo);
 
 	if (infile.fail())
@@ -33,55 +33,55 @@ void Store::populateCustomer(string customerInfo)
 	}
 	else
 	{
-		string s; // This string contains the first line in the file
-
-		if (infile.good())  // it reads the first line of the file containing the 
-		{
-			getline(infile, s);
-		}
-
-		int customerId;
+		int Id;
 		string lastName;
 		string firstName;
 
-		stringstream firstline(s);
-		firstline >> customerId>>lastName>>firstName;
-		
-		cout << customerId <<" "<<lastName<<" " <<firstName<< endl;
+		ifstream fin;
+		fin.open(customerInfo);
 
+		while (!fin.eof()) {
+			fin >> Id;
+			fin >> lastName;
+			fin >> firstName;
+			Customer * temp = new Customer(Id, firstName, lastName);
+			overallCustomerList.addCustomer(temp);
+		}
+	}
+}
 
-		//string p;
+void Store::populateCommandsFile(string fileName)
+{	
+	string p;
+	fstream infile(fileName);
 
+	while (getline(infile, p))
+	{
+		char command;
+		int customerId;
+		char mediaType;
+		char movieType;
+		stringstream firstline(p);
+		firstline >> command >> customerId >> mediaType >> movieType;
 
-
-		//while (getline(infile, p))
-		//{
-		//	insertMazeValues(p, height, width, maze);
-		//}
-
-
-		//if (!found)
-		//{
-		//	cout << "No exit - Sartre was right" << endl;
-		//}
-		//else
-		//{
-		//	cout << endl;
-
-		//	printMaze(maze);
-
-		//	for (int i = moves.size() - 1; i >= 0; i--) {
-		//	cout << moves[i];
-		//	}
-		//}
-
+		if (command == 'B' || command == 'R' || command == 'I' || command == 'H')
+		{	
+			if () 
+			{
+			
+			}
+		}
+				
 	}
 
 
 }
 
+
+
 void Store::commandHandler(char command)
 {
+
 }
 
 void Store::printCustomerHistory(Customer * customer)

@@ -15,6 +15,7 @@ public:
 
 	void populateMovie(string fileName);
 	void populateCustomer(string customerInfo);
+	void populateCommandsFile(string fileName);
 	void commandHandler(char command);
 	void printCustomerHistory(Customer * customer);
 	void printInventory(MovieList * movieList);
@@ -23,7 +24,7 @@ public:
 
 private:
 
-	CustomerList customerList;
+	CustomerList overallCustomerList;
 	MovieList movieList;
 };
 

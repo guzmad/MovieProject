@@ -84,7 +84,10 @@ int main()
 
 	Store diegoStore;
 
-	diegoStore.populateCustomer("data4customers");
+	diegoStore.populateCustomer("data4customers.txt");
+
+	Store diegoComands;
+	diegoComands.populateCommandsFile("data4commands.txt");
 
 	/*q.checkOut(test7);
 	q.checkOut(test5);
