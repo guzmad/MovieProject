@@ -55,7 +55,7 @@ bool Movie::operator==(const Movie & rhs)
 
 bool Movie::operator<(const Movie & rhs) 
 {
-	return this->releaseYear < rhs.releaseYear;
+	/*return this->releaseYear < rhs->releaseYear;*/
 }
 
 bool Movie::operator>(const Movie & rhs)
