@@ -174,17 +174,8 @@ void Store::populateCommandsFile(string fileName)
 		char movieType;
 		stringstream firstline(p);
 		firstline >> command >> customerId >> mediaType >> movieType;
-
-		if (command == 'B' || command == 'R' || command == 'I' || command == 'H')
-		{	
-			//if () 
-			//{
-			
-			//}
-		}
-				
+		
 	}
-
 }
 
 

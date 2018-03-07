@@ -23,7 +23,6 @@ public:
 	bool checkOut(MovieInventory &MovieInventory);
 	bool checkIn(MovieInventory &MovieInventory);
 
-
 private:
 	
 	vector<vector<MovieInventory>> movieList;
