@@ -41,6 +41,11 @@ void MovieInventory::decrementQuantity()
 	}
 }
 
+void MovieInventory::setQuantity(int val)
+{
+	quantity += val;
+}
+
 Movie * MovieInventory::getMovie()
 {
 	return movie;

@@ -40,7 +40,7 @@ bool MovieList::addMovie(MovieInventory movieInventory)
 
 	for (int i = 0; i < movieList[element].size(); i++) {
 		if (movieList[element][i].getMovie()->operator==(movieInventory.getMovie())) {
-			incrementMovie(movieList[element][i]);
+			changeQuantity(movieList[element][i], movieInventory.getQuantity());
 			return false;
 		}
 	}
@@ -64,6 +64,12 @@ bool MovieList::incrementMovie(MovieInventory &movieInventory)
 bool MovieList::decrementMovie(MovieInventory &movieInventory)
 {
 	movieInventory.decrementQuantity();
+	return true;
+}
+
+bool MovieList::changeQuantity(MovieInventory & movieInventory, int val)
+{
+	movieInventory.setQuantity(val);
 	return true;
 }
 

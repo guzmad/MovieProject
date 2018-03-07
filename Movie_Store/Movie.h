@@ -13,7 +13,7 @@ public:
 
 	// overloaded operators
 	virtual bool operator==(Movie * rhs);
-	virtual bool operator<(Movie* rhs);
+	virtual bool operator<(Movie* rhs) = 0;
 	virtual bool operator>(Movie* rhs);
 	
 	// Accessors
