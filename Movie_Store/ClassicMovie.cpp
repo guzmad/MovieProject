@@ -31,7 +31,7 @@ string ClassicMovie::getMajorActor() const
 	return majorActor;
 }
 
-bool ClassicMovie::operator==(const Movie & rhs) const
+bool ClassicMovie::operator==(const Movie & rhs)
 {
 	if (releaseMonth == rhs.getReleaseMonth() && releaseYear == rhs.getReleaseYear() 
 		&& getMajorActor() == rhs.getMajorActor())
@@ -44,7 +44,7 @@ bool ClassicMovie::operator==(const Movie & rhs) const
 	}
 }
 
-bool ClassicMovie::operator<(const Movie & rhs) const
+bool ClassicMovie::operator<(const Movie & rhs)
 {
 	if (releaseYear < rhs.getReleaseYear())
 	{
@@ -73,7 +73,7 @@ bool ClassicMovie::operator<(const Movie & rhs) const
 	return false;
 }
 
-bool ClassicMovie::operator>(const Movie & rhs) const
+bool ClassicMovie::operator>(const Movie & rhs)
 {
 	if (releaseYear > rhs.getReleaseYear()) 
 	{

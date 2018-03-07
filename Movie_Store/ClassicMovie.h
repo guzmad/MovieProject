@@ -10,9 +10,9 @@ public:
 	ClassicMovie(char genre, string directorName, string movieTitle, string majorActor, int releaseMonth, int releaseYear);
 	~ClassicMovie();
 
-	virtual bool operator==(const Movie& rhs) const;
-	virtual bool operator<(const Movie& rhs) const;
-	virtual bool operator>(const Movie& rhs) const;
+	virtual bool operator==(const Movie& rhs);
+	virtual bool operator<(const Movie& rhs);
+	virtual bool operator>(const Movie& rhs);
 
 	virtual int getReleaseMonth() const;
 	virtual void display() const; // print out movie data and return string

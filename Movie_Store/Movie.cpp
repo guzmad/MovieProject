@@ -48,19 +48,19 @@ void Movie::print() const
 		<< setw(20) << getDirectorName() << setw(7) << getReleaseYear();
 }
 
-bool Movie::operator==(Movie * rhs)
+bool Movie::operator==(const Movie & rhs)
 {
-	return this->movieTitle == rhs->movieTitle && this->releaseYear == rhs->releaseYear;
+	return this->movieTitle == rhs.movieTitle && this->releaseYear == rhs.releaseYear;
 }
 
-bool Movie::operator<(Movie * rhs) 
+bool Movie::operator<(const Movie & rhs) 
 {
-	/*return this->releaseYear < rhs->releaseYear;*/
+	return this->releaseYear < rhs.releaseYear;
 }
 
-bool Movie::operator>(Movie * rhs)
+bool Movie::operator>(const Movie & rhs)
 {
-	return this->releaseYear > rhs->releaseYear;
+	return this->releaseYear > rhs.releaseYear;
 }
 
 Movie::~Movie()

@@ -12,7 +12,7 @@ DramaMovie::~DramaMovie()
 {
 }
 
-bool DramaMovie::operator<(const Movie & rhs) const
+bool DramaMovie::operator<(const Movie & rhs)
 {
 	if (directorName < rhs.getDirectorName()) 
 	{ 
@@ -30,7 +30,7 @@ bool DramaMovie::operator<(const Movie & rhs) const
 	
 }
 
-bool DramaMovie::operator>(const Movie & rhs) const
+bool DramaMovie::operator>(const Movie & rhs)
 {
 	if (directorName > rhs.getDirectorName()) 
 	{
@@ -46,7 +46,7 @@ bool DramaMovie::operator>(const Movie & rhs) const
 	}
 }
 
-bool DramaMovie::operator==(const Movie &rhs) const
+bool DramaMovie::operator==(const Movie &rhs)
 {
 	if (directorName == rhs.getDirectorName() && movieTitle == rhs.getMovieTitle()) 
 	{

@@ -153,10 +153,10 @@ void Store::populateCommandsFile(string fileName)
 
 		if (command == 'B' || command == 'R' || command == 'I' || command == 'H')
 		{	
-			if () 
-			{
+			//if () 
+			//{
 			
-			}
+			//}
 		}
 				
 	}

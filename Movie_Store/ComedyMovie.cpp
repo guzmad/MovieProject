@@ -12,7 +12,7 @@ ComedyMovie::~ComedyMovie()
 {
 }
 
-bool ComedyMovie::operator<(const Movie & rhs) const
+bool ComedyMovie::operator<(const Movie & rhs)
 {
 	if (this->movieTitle < rhs.getMovieTitle())
 	{
@@ -28,7 +28,7 @@ bool ComedyMovie::operator<(const Movie & rhs) const
 	}
 }
 
-bool ComedyMovie::operator>(const Movie & rhs) const
+bool ComedyMovie::operator>(const Movie & rhs) 
 {
 	if (movieTitle > rhs.getMovieTitle())
 	{
@@ -44,7 +44,7 @@ bool ComedyMovie::operator>(const Movie & rhs) const
 	}
 }
 
-bool ComedyMovie::operator==(const Movie &rhs) const
+bool ComedyMovie::operator==(const Movie &rhs) 
 {
 	if (movieTitle == rhs.getMovieTitle() && releaseYear == rhs.getReleaseYear())
 	{
