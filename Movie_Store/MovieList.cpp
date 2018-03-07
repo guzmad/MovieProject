@@ -39,7 +39,7 @@ bool MovieList::addMovie(MovieInventory movieInventory)
 	}
 
 	for (int i = 0; i < movieList[element].size(); i++) {
-		if (movieList[element][i].getMovie()->operator==(*movieInventory.getMovie())) {
+		if (*movieList[element][i].getMovie() == (*movieInventory.getMovie())) {
 			changeQuantity(movieList[element][i], movieInventory.getQuantity());
 			return false;
 		}
@@ -105,7 +105,7 @@ int MovieList::getWall(vector<vector<MovieInventory>>& movieList, int left, int 
 	int i = (left - 1);
 
 	for (int j = left; j <= right - 1; j++) {
-		if (movieList[element][j].getMovie() < pivot.getMovie()) {  // this is where the problem is 
+		if (*movieList[element][j].getMovie() < *pivot.getMovie()) {  // this is where the problem is 
 			i++;
 			temp = movieList[element][j];
 			movieList[element][j] = movieList[element][i];
