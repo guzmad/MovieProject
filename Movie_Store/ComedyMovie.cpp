@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ComedyMovie.h"
-
+#include <iostream>
+#include <iomanip>
 
 ComedyMovie::ComedyMovie(char genre, string directorName, string movieTitle, int releaseYear):
 Movie(genre, directorName, movieTitle, releaseYear)

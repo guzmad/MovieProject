@@ -27,7 +27,7 @@ public:
 
 
 	// print function
-	virtual void print() const;
+	virtual void print() = 0;
 
 protected:
 	string movieTitle;

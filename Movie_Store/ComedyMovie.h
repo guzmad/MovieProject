@@ -13,6 +13,8 @@ public:
 	virtual bool operator==(const Movie& rhs);
 	virtual bool operator<(const Movie& rhs);
 	virtual bool operator>(const Movie& rhs);
+
+	virtual void ComedyMovie::print();
 };
 
 #endif // !COMEDY_MOVIE_H
