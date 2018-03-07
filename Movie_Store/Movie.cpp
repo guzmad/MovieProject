@@ -42,7 +42,7 @@ int Movie::getReleaseMonth() const
 	return 0;
 }
 
-void Movie::print() const
+void Movie::print()
 {
 	cout << setw(7) << getGenre() << setw(35) << getMovieTitle()
 		<< setw(20) << getDirectorName() << setw(7) << getReleaseYear();
@@ -55,7 +55,7 @@ bool Movie::operator==(Movie * rhs)
 
 bool Movie::operator<(Movie * rhs) 
 {
-	/*return this->releaseYear < rhs->releaseYear;*/
+	return this->releaseYear < rhs->releaseYear;
 }
 
 bool Movie::operator>(Movie * rhs)

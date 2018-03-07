@@ -13,8 +13,8 @@ public:
 
 	// overloaded operators
 	virtual bool operator==(Movie * rhs);
-	virtual bool operator<(Movie* rhs) = 0;
-	virtual bool operator>(Movie* rhs);
+	virtual bool operator<(Movie * rhs);
+	virtual bool operator>(Movie * rhs);
 	
 	// Accessors
 	string getMovieTitle() const;
@@ -27,7 +27,7 @@ public:
 
 
 	// print function
-	virtual void print() const;
+	virtual void print() = 0;
 
 protected:
 	string movieTitle;

@@ -15,7 +15,7 @@ public:
 	virtual bool operator>(const Movie& rhs) const;
 
 	virtual int getReleaseMonth() const;
-	virtual void display() const; // print out movie data and return string
+	virtual void print(); // print out movie data and return string
 	virtual string getMajorActor() const; // get the major actor for the movie	
 
 private:

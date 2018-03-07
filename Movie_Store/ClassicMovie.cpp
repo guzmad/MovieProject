@@ -20,10 +20,10 @@ int ClassicMovie::getReleaseMonth() const
 	return releaseMonth;
 }
 
-void ClassicMovie::display() const
+void ClassicMovie::print()
 {
 	cout << setw(7) << getGenre() << setw(35) << getMovieTitle()
-		<< setw(20) << getDirectorName() << setw(7) << getMajorActor() << setw(7) << getReleaseMonth() << setw(7) << getReleaseYear();
+		<< setw(20) << getDirectorName() << setw(20) << getMajorActor() << setw(7) << getReleaseMonth() << setw(7) << getReleaseYear();
 }
 
 string ClassicMovie::getMajorActor() const

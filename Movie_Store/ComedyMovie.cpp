@@ -55,3 +55,9 @@ bool ComedyMovie::operator==(const Movie &rhs) const
 		return false;
 	}
 }
+
+void ComedyMovie::print()
+{
+	cout << setw(7) << getGenre() << setw(35) << getMovieTitle()
+		<< setw(20) << getDirectorName() << setw(7) << getReleaseYear();
+}

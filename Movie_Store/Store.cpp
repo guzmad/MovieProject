@@ -16,6 +16,8 @@ Store::~Store()
 void Store::populateMovie(string fileName)
 {
 	char check = ' ';
+	char putBack;
+	char putBack2;
 	string tempStr;
 	string line;
 	char genre;
@@ -58,13 +60,35 @@ void Store::populateMovie(string fileName)
 				majorActor += (" " + tempStr);
 			}
 
-			char putBack = majorActor[majorActor.length() - 1];
-			fin.putback(putBack);
+			if (isdigit(majorActor[majorActor.length() - 2])) {     // checks for two digit months
+				putBack = majorActor[majorActor.length() - 1];
+				putBack2 = majorActor[majorActor.length() - 2];
 
-			majorActor.pop_back();
-			majorActor.pop_back(); //gets rid of white space
+				stringstream ss;  //convert chars to string
+				string s;
+				ss << putBack2;
+				ss >> s;
 
-			fin >> month;
+				s += putBack;
+				
+				stringstream convert(s); // convert string to int
+				convert >> month;
+
+				majorActor.pop_back();
+				majorActor.pop_back();
+				majorActor.pop_back();
+			}
+
+			else {
+				putBack = majorActor[majorActor.length() - 1];
+				fin.putback(putBack);
+
+				majorActor.pop_back();
+				majorActor.pop_back(); //gets rid of white space
+
+				fin >> month;
+			}
+
 			fin >> year;
 
 			tempMoviePtr = factory.createMovie(genre, director, title, majorActor, month, year);

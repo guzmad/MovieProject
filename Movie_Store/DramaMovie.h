@@ -3,6 +3,10 @@
 #define DRAMAMOVIE_H
 
 #include "movie.h"
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 class DramaMovie : public Movie
 {
@@ -14,7 +18,7 @@ public:
 	virtual bool operator<(const Movie& rhs) const;
 	virtual bool operator>(const Movie& rhs) const;
 
-
+	virtual void print();
 
 private:
 

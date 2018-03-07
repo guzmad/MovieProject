@@ -3,6 +3,9 @@
 #define COMEDY_MOVIE_H
 
 #include "movie.h"
+#include <iostream>
+#include <iomanip>
+using namespace std;
 
 class ComedyMovie : public Movie
 {
@@ -13,6 +16,9 @@ public:
 	virtual bool operator==(const Movie& rhs) const;
 	virtual bool operator<(const Movie& rhs) const;
 	virtual bool operator>(const Movie& rhs) const;
+
+	virtual void print();
+
 };
 
 #endif // !COMEDY_MOVIE_H
