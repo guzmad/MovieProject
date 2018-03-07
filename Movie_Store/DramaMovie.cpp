@@ -48,7 +48,7 @@ bool DramaMovie::operator>(const Movie & rhs)
 
 bool DramaMovie::operator==(const Movie &rhs)
 {
-	if (directorName == rhs.getDirectorName() && movieTitle == rhs.getMovieTitle()) 
+	if (directorName == rhs.getDirectorName() && movieTitle == rhs.getMovieTitle() && releaseYear == rhs.getReleaseYear())  
 	{
 		return true;
 	}

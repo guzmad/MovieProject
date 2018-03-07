@@ -33,7 +33,7 @@ string ClassicMovie::getMajorActor() const
 
 bool ClassicMovie::operator==(const Movie & rhs)
 {
-	if (releaseMonth == rhs.getReleaseMonth() && releaseYear == rhs.getReleaseYear())
+	if (releaseMonth == rhs.getReleaseMonth() && releaseYear == rhs.getReleaseYear() && movieTitle == rhs.getMovieTitle() && directorName == rhs.getDirectorName())
 	{
 		return true;
 	}
