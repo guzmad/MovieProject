@@ -84,7 +84,7 @@ int main()
 
 	Store diegoStore;
 
-	diegoStore.populateCustomer("data4customers");
+	diegoStore.populateCustomer("data4customers.txt");
 
 	/*q.checkOut(test7);
 	q.checkOut(test5);
@@ -115,6 +115,7 @@ int main()
 	Customer * tmp = c.getCustomer(1111);*/
 
 	diegoStore.populateMovie("data4movies.txt");
+	diegoStore.populateCommandsFile("data4commands.txt");
 
 	system("pause");
     return 0;

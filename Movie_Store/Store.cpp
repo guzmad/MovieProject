@@ -131,7 +131,7 @@ void Store::populateMovie(string fileName)
 	}
 	
 	cout << endl << endl << endl;
-	printInventory(movieList);
+//	printInventory(movieList);
 }
 
 void Store::populateCustomer(string customerInfo)
@@ -153,12 +153,14 @@ void Store::populateCustomer(string customerInfo)
 
 		while (!fin.eof()) {
 			fin >> Id;
+			cout << Id << " " << endl;
 			fin >> lastName;
 			fin >> firstName;
 			Customer * temp = new Customer(Id, firstName, lastName);
 			overallCustomerList.addCustomer(temp);
 		}
 	}
+
 }
 
 void Store::populateCommandsFile(string fileName)
@@ -173,8 +175,27 @@ void Store::populateCommandsFile(string fileName)
 		char mediaType;
 		char movieType;
 		stringstream firstline(p);
-		firstline >> command >> customerId >> mediaType >> movieType;
+		firstline >> command;
+
+		if (command == 'I' || command == 'R' || command == 'B' || command == 'H')
+		{
+			if (command == 'I')
+			{
+				printInventory(movieList);
+			}
+
+			if (command == 'H')
+			{
+				firstline >> customerId;
+				if (overallCustomerList.getCustomer(customerId) != nullptr) {
+					overallCustomerList.getCustomer(customerId)->printHistory();
+				}
+			}
+
 		
+
+
+		}
 	}
 }
 
