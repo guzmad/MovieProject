@@ -46,10 +46,12 @@ void Customer::setFirstName(string firstName)
 
 void Customer::addHistory(string movieTitle)
 {
+	//string adder = command + " " + movieTitle;
 	customerHistory.add(movieTitle);
 }
 
 void Customer::printHistory()
 {
+	cout << firstName << " " << lastName << ": " << endl;
 	customerHistory.print();
 }

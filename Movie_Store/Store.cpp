@@ -31,7 +31,7 @@ void Store::populateMovie(string fileName)
 	MovieFactory factory;
 	Movie * tempMoviePtr;
 	ifstream fin;
-	fin.open("data4movies.txt");
+	fin.open(fileName);
 
 	while (!fin.eof()) {
 		fin >> genre;
@@ -125,7 +125,6 @@ void Store::populateMovie(string fileName)
 
 		else {
 			string line;
-			cout << "Non-valid Command!" << endl;
 			getline(fin, line);
 		}
 	}
@@ -153,11 +152,11 @@ void Store::populateCustomer(string customerInfo)
 
 		while (!fin.eof()) {
 			fin >> Id;
-			cout << Id << " " << endl;
 			fin >> lastName;
 			fin >> firstName;
 			Customer * temp = new Customer(Id, firstName, lastName);
 			overallCustomerList.addCustomer(temp);
+//			overallCustomerList.getCustomer(Id)->printHistory();
 		}
 	}
 
@@ -170,10 +169,20 @@ void Store::populateCommandsFile(string fileName)
 
 	while (getline(infile, p))
 	{
+		Movie * tempMoviePtr;
+		Customer * tempCustomer;
+		MovieFactory factory;
+		MovieInventory tempMovieInventory;
+		string tempStr;
 		char command;
 		int customerId;
 		char mediaType;
 		char movieType;
+		string title;
+		string director;
+		string actor;
+		int year;
+		int month;
 		stringstream firstline(p);
 		firstline >> command;
 
@@ -184,27 +193,157 @@ void Store::populateCommandsFile(string fileName)
 				printInventory(movieList);
 			}
 
-			if (command == 'H')
+			else if (command == 'H')
 			{
 				firstline >> customerId;
+				firstline >> mediaType;
+				firstline >> movieType;
+
 				if (overallCustomerList.getCustomer(customerId) != nullptr) {
 					overallCustomerList.getCustomer(customerId)->printHistory();
 				}
 			}
 
+			else if (command == 'B') {
+				firstline >> customerId;
+				firstline >> mediaType;
+				firstline >> movieType;
+
+				if (movieType == 'F') {
+					firstline >> title;
+					while (title[title.length() - 1] != ',') {
+						firstline >> tempStr;
+						title += (" " + tempStr);
+					}
+					title.pop_back();
+					firstline >> year;
+
+					tempMoviePtr = factory.createMovie(movieType, "", title, year);
+					Customer * tempCustomer = overallCustomerList.getCustomer(customerId);
+					MovieInventory tempMovieInventory(tempMoviePtr);
+					if (overallCustomerList.getCustomer(customerId) != nullptr) {
+						borrowMovie(tempCustomer, tempMoviePtr);
+					}
+				}
+
+				if (movieType == 'D') {
+					firstline >> director;
+					while (director[director.length() - 1] != ',') {
+						firstline >> tempStr;
+						director += (" " + tempStr);
+					}
+					director.pop_back();
+					
+					firstline >> title;
+					while (title[title.length() - 1] != ',') {
+						firstline >> tempStr;
+						title += (" " + tempStr);
+					}
+					title.pop_back();
+
+					tempMoviePtr = factory.createMovie(movieType, director, title, 0);
+					Customer * tempCustomer = overallCustomerList.getCustomer(customerId);
+					MovieInventory tempMovieInventory(tempMoviePtr);
+					if (overallCustomerList.getCustomer(customerId) != nullptr) {
+						borrowMovie(tempCustomer, tempMoviePtr);
+					}
+				}
+
+				if (movieType == 'C') {
+					firstline >> month;
+					firstline >> year;
+
+					firstline >> actor;
+					while (!firstline.eof()) {
+						firstline >> tempStr;
+						actor += (" " + tempStr);
+					}
+
+					tempMoviePtr = factory.createMovie(movieType, "", "", actor, month, year);
+					Customer * tempCustomer = overallCustomerList.getCustomer(customerId);
+					MovieInventory tempMovieInventory(tempMoviePtr);
+					if (overallCustomerList.getCustomer(customerId) != nullptr) {
+						borrowMovie(tempCustomer, movieList.findMovieWithActor(tempMovieInventory));
+					}
+				}
+//				printInventory(movieList);
+//				if (overallCustomerList.getCustomer(customerId) != nullptr) {
+//					overallCustomerList.getCustomer(customerId)->printHistory();
+//				}
+			}
+
+			else if (command == 'R') {
+				firstline >> customerId;
+				firstline >> mediaType;
+				firstline >> movieType;
+
+				if (movieType == 'F') {
+					firstline >> title;
+					while (title[title.length() - 1] != ',') {
+						firstline >> tempStr;
+						title += (" " + tempStr);
+					}
+					title.pop_back();
+					firstline >> year;
+
+					tempMoviePtr = factory.createMovie(movieType, "", title, year);
+					Customer * tempCustomer = overallCustomerList.getCustomer(customerId);
+					MovieInventory tempMovieInventory(tempMoviePtr);
+					if (overallCustomerList.getCustomer(customerId) != nullptr) {
+						returnMovie(tempCustomer, tempMoviePtr);
+					}
+				}
+
+				if (movieType == 'D') {
+					firstline >> director;
+					while (director[director.length() - 1] != ',') {
+						firstline >> tempStr;
+						director += (" " + tempStr);
+					}
+					director.pop_back();
+
+					firstline >> title;
+					while (title[title.length() - 1] != ',') {
+						firstline >> tempStr;
+						title += (" " + tempStr);
+					}
+					title.pop_back();
+
+					tempMoviePtr = factory.createMovie(movieType, director, title, 0);
+					Customer * tempCustomer = overallCustomerList.getCustomer(customerId);
+					MovieInventory tempMovieInventory(tempMoviePtr);
+					if (overallCustomerList.getCustomer(customerId) != nullptr) {
+						returnMovie(tempCustomer, tempMoviePtr);
+					}
+				}
+
+				if (movieType == 'C') {
+					firstline >> month;
+					firstline >> year;
+
+					firstline >> actor;
+					while (!firstline.eof()) {
+						firstline >> tempStr;
+						actor += (" " + tempStr);
+					}
+
+					tempMoviePtr = factory.createMovie(movieType, "", "", actor, month, year);
+					Customer * tempCustomer = overallCustomerList.getCustomer(customerId);
+					MovieInventory tempMovieInventory(tempMoviePtr);
+					if (overallCustomerList.getCustomer(customerId) != nullptr) {
+						returnMovie(tempCustomer, movieList.findMovieWithActor(tempMovieInventory));
+					}
+				}
+				/*printInventory(movieList);
+				if (overallCustomerList.getCustomer(customerId) != nullptr) {
+					overallCustomerList.getCustomer(customerId)->printHistory();
+				}*/
+			}
 		
-
-
 		}
 	}
 }
 
-
-
-void Store::commandHandler(char command)
-{
-
-}
 
 void Store::printCustomerHistory(Customer * customer)
 {
@@ -221,15 +360,15 @@ void Store::printInventory(MovieList &movieList)
 	cout << endl;
 }
 
-void Store::borrowMovie(Customer * customer, MovieList * movieList, MovieInventory movieInventory)
+void Store::borrowMovie(Customer * customer, MovieInventory movieInventory)
 {
-	movieList->checkOut(movieInventory);
-	customer->addHistory("B " + movieInventory.getMovie()->getMovieTitle());
+	movieList.checkOut(movieInventory);
+	customer->addHistory("B | " + movieInventory.getMovie()->getMovieTitle());
 }
 
-void Store::returnMovie(Customer * customer, MovieList * movieList, MovieInventory movieInventory)
+void Store::returnMovie(Customer * customer, MovieInventory movieInventory)
 {
-	movieList->checkIn(movieInventory);
-	customer->addHistory("R " + movieInventory.getMovie()->getMovieTitle());
+	movieList.checkIn(movieInventory);
+	customer->addHistory("R | " + movieInventory.getMovie()->getMovieTitle());
 }
 

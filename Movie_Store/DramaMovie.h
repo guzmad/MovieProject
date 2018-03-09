@@ -17,6 +17,7 @@ public:
 	virtual bool operator==(const Movie& rhs);
 	virtual bool operator<(const Movie& rhs);
 	virtual bool operator>(const Movie& rhs);
+	virtual bool isSame(const Movie& rhs);
 
 	virtual void print();
 

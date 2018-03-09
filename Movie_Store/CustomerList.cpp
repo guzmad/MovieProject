@@ -14,12 +14,13 @@ void CustomerList::addCustomer(Customer * customer)
 
 Customer * CustomerList::getCustomer(int id)
 {
-	for (int i = 0; i < 30; i++) {
-		for (int j = 0; j < customerList[i].size(); i++) {
-			if (customerList[i][j]->getId() == id)
-				return customerList[i][j];
+	int element = id % 30;
+
+		for (int j = 0; j < customerList[element].size(); j++) {
+			if (customerList[element][j]->getId() == id)
+				return customerList[element][j];
 		}
-	}
+
 	cout << "Customer not found! " << endl;
 	return nullptr;
 }

@@ -46,9 +46,14 @@ bool DramaMovie::operator>(const Movie & rhs)
 	}
 }
 
+bool DramaMovie::isSame(const Movie & rhs)
+{
+	return false;
+}
+
 bool DramaMovie::operator==(const Movie &rhs)
 {
-	if (directorName == rhs.getDirectorName() && movieTitle == rhs.getMovieTitle() && releaseYear == rhs.getReleaseYear())  
+	if (directorName == rhs.getDirectorName() && movieTitle == rhs.getMovieTitle())  
 	{
 		return true;
 	}

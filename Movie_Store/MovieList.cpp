@@ -73,6 +73,19 @@ bool MovieList::changeQuantity(MovieInventory & movieInventory, int val)
 	return true;
 }
 
+Movie * MovieList::findMovieWithActor(MovieInventory & movieInventory)
+{
+	int element = 2;
+
+	for (int i = 0; i < movieList[element].size(); i++) {
+		if ((*movieList[element][i].getMovie()).isSame(*movieInventory.getMovie())) {
+			return movieList[element][i].getMovie();
+		}
+	}
+
+	return nullptr;
+}
+
 void MovieList::printByGenre(const char x)
 {
 	char genre = x;
@@ -148,7 +161,7 @@ bool MovieList::checkOut(MovieInventory &MovieInventory)
 	}
 
 	for (int i = 0; i < movieList[element].size(); i++) {
-		if (movieList[element][i].getMovie()==MovieInventory.getMovie()) {
+		if (*movieList[element][i].getMovie() == *MovieInventory.getMovie()) {
 			decrementMovie(movieList[element][i]);
 			return true;
 		}
@@ -174,7 +187,7 @@ bool MovieList::checkIn(MovieInventory &MovieInventory)
 	}
 
 	for (int i = 0; i < movieList[element].size(); i++) {
-		if (movieList[element][i].getMovie() == MovieInventory.getMovie()) {
+		if (*movieList[element][i].getMovie() == *MovieInventory.getMovie()) {
 			incrementMovie(movieList[element][i]);
 			return true;
 		}

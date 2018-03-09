@@ -15,6 +15,7 @@ public:
 	virtual bool operator==(const Movie & rhs) = 0;
 	virtual bool operator<(const Movie& rhs) = 0;
 	virtual bool operator>(const Movie& rhs) = 0;
+	virtual bool isSame(const Movie& rhs) = 0;
 	
 	// Accessors
 	string getMovieTitle() const;

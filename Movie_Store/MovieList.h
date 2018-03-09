@@ -22,6 +22,7 @@ public:
 	bool checkOut(MovieInventory &MovieInventory);
 	bool checkIn(MovieInventory &MovieInventory);
 	bool changeQuantity(MovieInventory & movieInventory, int val);
+	Movie * findMovieWithActor(MovieInventory &movieInventory);
 
 private:
 	

@@ -7,7 +7,14 @@
 ClassicMovie::ClassicMovie(char genre, string directorName, string movieTitle, string majorActor, int releaseMonth, int releaseYear) :
 	Movie(genre, directorName, movieTitle, releaseYear)
 {
-	this->majorActor = majorActor;
+	this->majorActor.push_back(majorActor);
+
+	for (int i = 0; i < this->majorActor.size(); i++) {
+		if (this->majorActor[i] != majorActor) {
+			this->majorActor.push_back(majorActor);
+		}
+	}
+
 	this->releaseMonth = releaseMonth;
 }
 
@@ -28,13 +35,28 @@ void ClassicMovie::print()
 
 string ClassicMovie::getMajorActor() const
 {
-	return majorActor;
+	string returner = majorActor[0];
+	return returner;
+}
+
+bool ClassicMovie::findMajorActor(string actor) const
+{
+	for (int i = 0; i < majorActor.size(); i++) {
+		if (majorActor[i] == actor) {
+			return true;
+		}
+	}
+	return false;
 }
 
 bool ClassicMovie::operator==(const Movie & rhs)
 {
 	if (releaseMonth == rhs.getReleaseMonth() && releaseYear == rhs.getReleaseYear() && movieTitle == rhs.getMovieTitle() && directorName == rhs.getDirectorName())
 	{
+		if (!findMajorActor(rhs.getMajorActor())) {
+			majorActor.push_back(rhs.getMajorActor());
+		}
+
 		return true;
 	}
 	else 
@@ -99,5 +121,17 @@ bool ClassicMovie::operator>(const Movie & rhs)
 	}
 
 	return false;
+}
+
+bool ClassicMovie::isSame(const Movie & rhs)
+{
+	if (releaseMonth == rhs.getReleaseMonth() && releaseYear == rhs.getReleaseYear() && findMajorActor(rhs.getMajorActor()))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
