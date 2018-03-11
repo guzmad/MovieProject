@@ -124,6 +124,7 @@ void Store::populateMovie(string fileName)
 		}
 
 		else {
+			cout << genre << " is not a valid genre" << endl;
 			string line;
 			getline(fin, line);
 		}
@@ -199,7 +200,7 @@ void Store::populateCommandsFile(string fileName)
 				firstline >> mediaType;
 				firstline >> movieType;
 
-				if (overallCustomerList.getCustomer(customerId) != nullptr) {
+				if (overallCustomerList.getCustomer(customerId) != nullptr && mediaType == 'D') {
 					overallCustomerList.getCustomer(customerId)->printHistory();
 				}
 			}
@@ -209,7 +210,11 @@ void Store::populateCommandsFile(string fileName)
 				firstline >> mediaType;
 				firstline >> movieType;
 
-				if (movieType == 'F') {
+				if (mediaType != 'D') {
+					cout << mediaType << " is not a valid genre" << endl;
+				}
+
+				else if (movieType == 'F') {
 					firstline >> title;
 					while (title[title.length() - 1] != ',') {
 						firstline >> tempStr;
@@ -226,7 +231,7 @@ void Store::populateCommandsFile(string fileName)
 					}
 				}
 
-				if (movieType == 'D') {
+				else if (movieType == 'D') {
 					firstline >> director;
 					while (director[director.length() - 1] != ',') {
 						firstline >> tempStr;
@@ -249,7 +254,7 @@ void Store::populateCommandsFile(string fileName)
 					}
 				}
 
-				if (movieType == 'C') {
+				else if (movieType == 'C') {
 					firstline >> month;
 					firstline >> year;
 
@@ -266,10 +271,6 @@ void Store::populateCommandsFile(string fileName)
 						borrowMovie(tempCustomer, movieList.findMovieWithActor(tempMovieInventory));
 					}
 				}
-//				printInventory(movieList);
-//				if (overallCustomerList.getCustomer(customerId) != nullptr) {
-//					overallCustomerList.getCustomer(customerId)->printHistory();
-//				}
 			}
 
 			else if (command == 'R') {
@@ -277,7 +278,11 @@ void Store::populateCommandsFile(string fileName)
 				firstline >> mediaType;
 				firstline >> movieType;
 
-				if (movieType == 'F') {
+				if (mediaType != 'D') {
+					cout << mediaType << " is not a valid genre" << endl;
+				}
+
+				else if (movieType == 'F') {
 					firstline >> title;
 					while (title[title.length() - 1] != ',') {
 						firstline >> tempStr;
@@ -294,7 +299,7 @@ void Store::populateCommandsFile(string fileName)
 					}
 				}
 
-				if (movieType == 'D') {
+				else if (movieType == 'D') {
 					firstline >> director;
 					while (director[director.length() - 1] != ',') {
 						firstline >> tempStr;
@@ -317,7 +322,7 @@ void Store::populateCommandsFile(string fileName)
 					}
 				}
 
-				if (movieType == 'C') {
+				else if (movieType == 'C') {
 					firstline >> month;
 					firstline >> year;
 
@@ -334,12 +339,12 @@ void Store::populateCommandsFile(string fileName)
 						returnMovie(tempCustomer, movieList.findMovieWithActor(tempMovieInventory));
 					}
 				}
-				/*printInventory(movieList);
-				if (overallCustomerList.getCustomer(customerId) != nullptr) {
-					overallCustomerList.getCustomer(customerId)->printHistory();
-				}*/
+				
 			}
 		
+		}
+		else {
+			cout << command << " is not a valid command" << endl;
 		}
 	}
 }
